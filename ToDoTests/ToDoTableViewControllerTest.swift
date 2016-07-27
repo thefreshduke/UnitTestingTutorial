@@ -63,7 +63,8 @@ class ToDoTableViewControllerTest: XCTestCase {
         
         if let actualSUT = sut {
             actualSUT.addToDo(toDo)
-            actualSUT.toDos.contains(expected)
+            let result = actualSUT.toDos.contains(expected)
+            XCTAssert(result)
         }
         else {
             XCTFail("no view controller available")
