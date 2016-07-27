@@ -53,4 +53,20 @@ class ToDoTableViewControllerTest: XCTestCase {
             XCTFail("no view controller available")
         }
     }
+    
+    func test_addToDo_3() {
+        
+        let title = "Make Unit Testing presentation"
+        let expected = ToDo(title: title)
+        
+        let toDo = ToDo(title: title)
+        
+        if let actualSUT = sut {
+            actualSUT.addToDo(toDo)
+            actualSUT.toDos.contains(expected)
+        }
+        else {
+            XCTFail("no view controller available")
+        }
+    }
 }

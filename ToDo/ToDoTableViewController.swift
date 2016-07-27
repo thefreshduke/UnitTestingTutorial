@@ -8,6 +8,14 @@
 
 import UIKit
 
+extension ToDo: Equatable {
+    
+}
+
+func ==(lhs: ToDo, rhs: ToDo) -> Bool {
+    return lhs.title == rhs.title && lhs.isFinished == rhs.isFinished
+}
+
 struct ToDo {
     let title: String
     var isFinished: Bool = false
