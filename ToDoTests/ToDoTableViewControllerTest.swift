@@ -19,7 +19,7 @@ class ToDoTableViewControllerTest: XCTestCase {
         // Put setup code here. This method is called before the invocation of each test method in the class.
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        sut = storyboard.instantiateViewControllerWithIdentifier("ToDoTableViewController") as! ToDoTableViewController
+        sut = storyboard.instantiateViewControllerWithIdentifier("ToDoTableViewController") as? ToDoTableViewController
     }
     
     override func tearDown() {
@@ -27,10 +27,27 @@ class ToDoTableViewControllerTest: XCTestCase {
         super.tearDown()
     }
     
-    func test_addToDo() {
+    func test_addToDo_1() {
         let toDo = ToDo(title: "Make Unit Testing presentation")
+        
         if let actualSUT = sut {
-//            actualSUT.
+            actualSUT.addToDo(toDo)
+            XCTAssertFalse(actualSUT.toDos.isEmpty)
+        }
+        else {
+            XCTFail("no view controller available")
+        }
+    }
+    
+    func test_addToDo_2() {
+        
+        let expected = 1
+        
+        let toDo = ToDo(title: "Make Unit Testing presentation")
+        
+        if let actualSUT = sut {
+            actualSUT.addToDo(toDo)
+            XCTAssertEqual(expected, actualSUT.toDos.count)
         }
         else {
             XCTFail("no view controller available")
